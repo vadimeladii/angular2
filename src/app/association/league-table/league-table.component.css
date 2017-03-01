@@ -1,0 +1,32 @@
+ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+li {
+  list-style: none;
+  display: inline-block;
+  width: calc(100% / 3);
+  text-align: center;
+}
+
+tr {
+  border-bottom: 2px groove #c8c8c8;
+}
+
+td {
+  border-left: 1px dotted #c8c8c8;
+}
+
+td.edit {
+  text-align: right;
+}
+
+.ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #17a926; /* green */
+}
+.ng-invalid:not(form)  {
+  border-left: 5px solid #a90308; /* red */
+}

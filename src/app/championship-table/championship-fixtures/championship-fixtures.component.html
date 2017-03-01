@@ -1,0 +1,35 @@
+<div class="container">
+  <br>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav">
+        <li><a [routerLink]="['/championship-table']">League-Table</a></li>
+        <li class="active"><a [routerLink]="['/championship-fixtures']">Fixture</a></li>
+      </ul>
+    </div>
+  </nav>
+  <br>
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th style="text-align: left">Date</th>
+      <th style="text-align: center">Home Team</th>
+      <th style="text-align: center">Score</th>
+      <th style="text-align: center">Away Team</th>
+      <th style="text-align: right">Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let fixture of fixtures"
+        [ngClass]="{success: fixture.status == 'FINISHED',warning: fixture.status =='SCHEDULED',danger: fixture.status =='TIMED',active: fixture.status =='POSTPONED' } ">
+      <td style="text-align: left">{{fixture.date | date}}</td>
+      <td style="text-align: center">{{fixture.homeTeamName}}</td>
+      <td style="text-align: center">{{fixture.goalsHomeTeam}} - {{fixture.goalsHomeTeam}}</td>
+      <td style="text-align: center">{{fixture.awayTeamName}}</td>
+      <td style="text-align: right">{{fixture.status}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<br>
+<br>

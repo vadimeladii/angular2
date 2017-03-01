@@ -1,0 +1,127 @@
+<br>
+<div class="container">
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav">
+        <li><a (click)="onSelectTeam(id)">Team</a></li>
+        <li class="active"><a (click)="onSelectLeagueTable(id)">League-Table</a></li>
+        <li><a (click)="onSelectFixture(id)">Fixture</a></li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<br>
+<div class="container">
+
+  <table class="table table-hover">
+    <thead>
+
+    <tr>
+      <th data-priority="4">Position</th>
+      <th>Team</th>
+      <th>Played</th>
+      <th data-priority="1">Win</th>
+      <th data-priority="2">Draw</th>
+      <th data-priority="3">Loose</th>
+      <th data-priority="6">Home</th>
+      <th data-priority="7">Away</th>
+      <th data-priority="5">+/-</th>
+      <th>Points</th>
+      <th>Edit</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let leagueTable of leagueTables"
+        [ngClass]="{success: leagueTable.position <= 4 , warning:leagueTable.position == 5, danger: leagueTable.position>=18 } ">
+      <td>{{leagueTable.position}}</td>
+      <td>{{leagueTable.teamName}}</td>
+      <td>{{leagueTable.playedGames}}</td>
+      <td>{{leagueTable.wins}}</td>
+      <td>{{leagueTable.draws}}</td>
+      <td>{{leagueTable.losses}}</td>
+      <td>{{leagueTable.homeGoals}}</td>
+      <td>{{leagueTable.awayGoals}}</td>
+      <td>{{leagueTable.goalDifference}}</td>
+      <td>{{leagueTable.points}}</td>
+      <td class="edit">
+          <button class="btn btn-success" data-toggle="modal" data-target="#myModal" (click)="editLeagueTable(leagueTable.position)">Edit</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<br>
+<br>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content"></div>
+  </div>
+  <div class="modal-dialog">
+    <div class="modal-content"></div>
+  </div>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" class=""> x</span><span
+          class="sr-only">Close</span>
+
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Edit League-Table</h4>
+
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="team">Team</label>
+          <input type="text" class="form-control" id="team" [(ngModel)]="modalLeagueTable.teamName" required>
+        </div>
+
+        <div class="form-group">
+          <label for="played">Played</label>
+          <input type="text"  class="form-control" id="played" [(ngModel)]="modalLeagueTable.playedGames" required>
+        </div>
+
+        <div class="form-group">
+          <label for="win">Win</label>
+          <input type="text"  class="form-control" id="win" [(ngModel)]="modalLeagueTable.wins" required>
+        </div>
+
+        <div class="form-group">
+          <label for="draw">Draw</label>
+          <input type="text"  class="form-control" id="draw" [(ngModel)]="modalLeagueTable.draws" required>
+        </div>
+
+        <div class="form-group">
+          <label for="loose">Loose</label>
+          <input type="text"  class="form-control" id="loose" [(ngModel)]="modalLeagueTable.losses" required>
+        </div>
+
+        <div class="form-group">
+          <label for="home">Home</label>
+          <input type="text"  class="form-control" id="home" [(ngModel)]="modalLeagueTable.homeGoals" required>
+        </div>
+
+        <div class="form-group">
+          <label for="away">away</label>
+          <input type="text"  class="form-control" id="away" [(ngModel)]="modalLeagueTable.awayGoals" required>
+        </div>
+
+        <div class="form-group">
+          <label for="difference">+/-</label>
+          <input type="text"  class="form-control" id="difference" [(ngModel)]="modalLeagueTable.goalDifference" required>
+        </div>
+
+        <div class="form-group">
+          <label for="points">Points</label>
+          <input type="text"  class="form-control" id="points" [(ngModel)]="modalLeagueTable.points" required>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" disabled >Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+

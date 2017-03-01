@@ -1,0 +1,23 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Football
+        <small>Association</small>
+      </h1>
+    </div>
+  </div>
+
+  <div class="col-md-6 portfolio-item" *ngFor="let association of associations">
+    <a (click)="onSelect(association.id)">
+      <img style="height: 300px" class="img-responsive" src="{{association.link}}" alt="">
+    </a>
+    <h3>
+      <a (click)="onSelect(association.id)">{{association.caption}}</a>
+    </h3>
+    <p>Upon yielding, kind sea subdue very seed sixth them lesser one lesser there earth days were multiply so sixth gathering fifth that man fowl made.</p>
+    <br>
+    <br>
+    <br>
+  </div>
+</div>

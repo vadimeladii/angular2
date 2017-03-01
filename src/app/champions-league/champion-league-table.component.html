@@ -1,0 +1,41 @@
+<div class="container">
+  <br>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav">
+        <li class="active"><a [routerLink]="['/champion-league-table']">League-Table</a></li>
+        <li><a [routerLink]="['/champion-league-fixtures']">Fixture</a></li>
+      </ul>
+    </div>
+  </nav>
+  <br>
+  <div class="col-md-6 portfolio-item" *ngFor="let championshipTable of championshipTables">
+    <h2>Groupa {{championshipTable.type}}</h2>
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th>Team</th>
+        <th>G</th>
+        <th>D</th>
+        <th>L</th>
+        <th>Pts</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let group of championshipTable.groups">
+        <td><img style="width: 30px; height: 20px"
+                 src={{group.crestURI}}> {{group.team}}
+        </td>
+        <td>{{group.playedGames}}</td>
+        <td>{{group.goalsAgainst}}</td>
+        <td>{{group.goalDifference}}</td>
+        <td>{{group.points}}</td>
+      </tr>
+      </tbody>
+    </table>
+    <br>
+    <br>
+    <br>
+  </div>
+
+</div>
